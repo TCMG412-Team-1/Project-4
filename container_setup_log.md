@@ -1,4 +1,6 @@
 Commands to get a container up and running (with Docker installed, of course):
+# Notice: If you are running this app from Docker, skip down to 'Setup from Docker'
+
 # Getting started
 ## Starting the container
 (From docker-machine)
@@ -41,7 +43,17 @@ following [this tutorial using RVM](http://railsapps.github.io/installrubyonrail
 * `gem install rails` # Installing rails
 * `rails -v` # See if rails installed correctly
 
-## Setting up Locomotive
+## Installing MongoDB for Engine
+[following this guide](https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-ubuntu/)
+* `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927` # Import public key ???
+* `echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list` # no idea
+* `sudo apt-get update`
+* `sudo apt-get install -y mongodb-org` # install mongodb
+
+## Installing PhantomJS for Engine
+more coming soon...
+
+# Setting up Steam and Wagon
 * `cd ~`
 * `git clone git://github.com/locomotivecms/steam.git` # Clone Steam
 * `git clone git://github.com/locomotivecms/wagon.git` # Clone Wagon
@@ -49,3 +61,16 @@ following [this tutorial using RVM](http://railsapps.github.io/installrubyonrail
 * `bundle install`
 * `bundle exec rake spec` # Run the built-in tests
 * `bundle exec bin/wagon serve spec/fixtures/default` # Run a rails server
+
+# Setting up Engine
+* `git clone git@github.com:locomotivecms/engine.git`
+* `cd engine`
+* `bundle install`
+
+
+# Setup from Docker
+* Follow [this].(http://stackoverflow.com/questions/4911504/rvm-installed-by-ruby-not-working) You will put some lines in ~/.bashrc and /etc/bash.bashrc
+* From inside the wagon directory, run `bundle install`
+* `bundle exec rake spec` # Run the built-in tests
+* `bundle exec bin/wagon serve spec/fixtures/default` # Run a rails server
+
